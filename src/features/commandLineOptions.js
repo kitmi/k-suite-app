@@ -2,7 +2,7 @@
 
 /**
  * Parse command line arguments using minimist and store the parsed object into app.argv, and add app.showUsage() helper function
- * @module Feature_CmdLineOptions
+ * @module Feature_CommandLineOptions
  */
 
 const path = require('path');
@@ -36,7 +36,7 @@ function optionDecorator(name) {
     return name.length == 1 ? ('-' + name) : ('--' + name);
 }
 
-function getUsage(app, usageOptions) {
+function getUsage(app, usageOptions, injects) {
     let usage = '';
 
     if (usageOptions.banner) {
@@ -48,18 +48,26 @@ function getUsage(app, usageOptions) {
             throw new Error('Invalid banner value of cmdLineOptions feature.');
         }
 
-        usage += '\n';
+        usage += '\n\n';
     }            
+
+    if (injects && injects.afterBanner) {
+        usage += injects.afterBanner();
+    }
 
     let fmtArgs = '';
     if (!Util._.isEmpty(usageOptions.arguments)) {
         fmtArgs = ' ' + usageOptions.arguments.map(arg => arg.required ? `<${arg.name}>` : `[${arg.name}]`).join(' ');
     }
 
-    usage += `Usage: ${usageOptions.program || path.basename(process.argv[1])}${fmtArgs} [options]\n`;
+    usage += `Usage: ${usageOptions.program || path.basename(process.argv[1])}${fmtArgs} [options]\n\n`;
+
+    if (injects && injects.afterCommandLine) {
+        usage += injects.afterCommandLine();
+    } 
     
     if (!Util._.isEmpty(usageOptions.options)) {
-        usage += `\nOptions:\n`;
+        usage += `Options:\n`;
         Util._.forOwn(usageOptions.options, (opts, name) => {
             let line = '  ' + optionDecorator(name);
             if (opts.alias) {
@@ -83,7 +91,18 @@ function getUsage(app, usageOptions) {
         });
     }        
 
+    if (injects && injects.afterOptions) {
+        usage += injects.afterOptions();
+    }
+
     return usage;
+}
+
+const argv = process.argv.slice(2);
+
+function parseArgv(options) {
+    const minimist = tryRequire('minimist');
+    return minimist(argv, translateMinimistOptions(options));
 }
 
 module.exports = {
@@ -93,9 +112,13 @@ module.exports = {
      */
     type: Feature.INIT,
 
+    parseArgv: parseArgv,
+
+    getUsage: getUsage,
+
     /**
      * Load the feature
-     * @param {CliApp} app - The cli app module object
+     * @param {App} app - The cli app module object
      * @param {object} usageOptions - Options for the feature     
      * @property {string} [usageOptions.banner] - Banner message or banner generator function
      * @property {string} [usageOptions.program] - Executable name
@@ -103,10 +126,36 @@ module.exports = {
      * @property {object} [usageOptions.options] - Command line options
      * @returns {Promise.<*>}
      */
-    load_: async (app, usageOptions) => {
-        const minimist = tryRequire('minimist');
-        let argv = process.argv.slice(2);
-        app.argv = minimist(argv, translateMinimistOptions(usageOptions.options));
+    load_: async (app, usageOptions) => {        
+        app.argv = parseArgv(usageOptions.options);
+
+        if (!Util._.isEmpty(usageOptions.arguments)) {     
+            let argNum = app.argv._.length;
+
+            if (argNum < usageOptions.arguments.length) {
+                let args = [];
+
+                let diff = usageOptions.arguments.length - argNum;
+                let i = 0;
+
+                usageOptions.arguments.forEach(arg => {
+                    if (arg.required) {
+                        if (i === argNum) {
+                            throw new Error(`Missing required argument: "${arg.name}"!`);
+                        }
+                        args.push(app.argv._[i++]);
+                    } else if (diff > 0) {
+                        if (arg.hasOwnProperty('default')) {
+                            args.push(arg['default']);                            
+                        }
+
+                        diff--;
+                    }                    
+                });
+
+                app.argv._ = args;
+            }            
+        }        
 
         app.showUsage = () => {
             console.log(getUsage(app, usageOptions));
