@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>@k-suite/app Class: App</title>
+	<title>@k-suite/app Class: ServiceContainer</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -86,16 +86,16 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: App</h1>
+	<h1 class="page-title">Class: ServiceContainer</h1>
 <section>
 
 <header>
     
         <h2>
-        App
+        ServiceContainer
         </h2>
         
-            <div class="class-description"><p>Cli app.</p></div>
+            <div class="class-description"><p>Service container class.</p></div>
         
     
 </header>
@@ -107,7 +107,7 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="App"><span class="type-signature"></span>new App()</h4>
+    <h4 class="name" id="ServiceContainer"><span class="type-signature"></span>new ServiceContainer(name [, options])</h4>
     
     
 </dt>
@@ -120,6 +120,100 @@
     
 
     
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The name of the container instance.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Container options</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
     
 
     
@@ -139,14 +233,6 @@
     
 
     
-        <dt class="mixes">Mixes In:</dt>
-
-        <dd class="mixes"><ul>
-        
-            <li>{<a href="Runable.html">Runable</a>}</li>
-        
-        </ul></dd>
-    
 
 	
 
@@ -163,7 +249,7 @@
 	
 	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
-		App.js
+		ServiceContainer.js
 	</dd>
 	
 
@@ -200,7 +286,7 @@
 
 
     <ul>
-        <li><a href="ServiceContainer.html">ServiceContainer</a></li>
+        <li>EventEmitter</li>
     </ul>
 
 
@@ -253,15 +339,6 @@
 
 	
 
-	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#config">ServiceContainer#config</a>
-			</li>
-		</ul>
-	</dd>
 	
 
     
@@ -339,15 +416,6 @@
 	
 
 	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#configLoader">ServiceContainer#configLoader</a>
-			</li>
-		</ul>
-	</dd>
-	
 
     
 
@@ -423,15 +491,6 @@
 
 	
 
-	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#configName">ServiceContainer#configName</a>
-			</li>
-		</ul>
-	</dd>
 	
 
     
@@ -509,15 +568,6 @@
 	
 
 	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#configPath">ServiceContainer#configPath</a>
-			</li>
-		</ul>
-	</dd>
-	
 
     
 
@@ -593,15 +643,6 @@
 
 	
 
-	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#env">ServiceContainer#env</a>
-			</li>
-		</ul>
-	</dd>
 	
 
     
@@ -679,15 +720,6 @@
 	
 
 	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#features">ServiceContainer#features</a>
-			</li>
-		</ul>
-	</dd>
-	
 
     
 
@@ -763,15 +795,6 @@
 
 	
 
-	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#name">ServiceContainer#name</a>
-			</li>
-		</ul>
-	</dd>
 	
 
     
@@ -849,15 +872,6 @@
 	
 
 	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#options">ServiceContainer#options</a>
-			</li>
-		</ul>
-	</dd>
-	
 
     
 
@@ -933,15 +947,6 @@
 
 	
 
-	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#services">ServiceContainer#services</a>
-			</li>
-		</ul>
-	</dd>
 	
 
     
@@ -1019,15 +1024,6 @@
 	
 
 	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#started">ServiceContainer#started</a>
-			</li>
-		</ul>
-	</dd>
-	
 
     
 
@@ -1103,15 +1099,6 @@
 
 	
 
-	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#workingPath">ServiceContainer#workingPath</a>
-			</li>
-		</ul>
-	</dd>
 	
 
     
@@ -1239,15 +1226,6 @@
 
 	
 
-	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#addFeatureRegistry">ServiceContainer#addFeatureRegistry</a>
-			</li>
-		</ul>
-	</dd>
 	
 
     
@@ -1381,15 +1359,6 @@
 
 	
 
-	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#enabled">ServiceContainer#enabled</a>
-			</li>
-		</ul>
-	</dd>
 	
 
     
@@ -1538,15 +1507,6 @@
 	
 
 	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#getService">ServiceContainer#getService</a>
-			</li>
-		</ul>
-	</dd>
-	
 
     
 
@@ -1645,15 +1605,6 @@
 
 	
 
-	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#loadConfig_">ServiceContainer#loadConfig_</a>
-			</li>
-		</ul>
-	</dd>
 	
 
     
@@ -1884,15 +1835,6 @@
 	
 
 	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#log">ServiceContainer#log</a>
-			</li>
-		</ul>
-	</dd>
-	
 
     
 
@@ -2094,15 +2036,6 @@
 	
 
 	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#registerService">ServiceContainer#registerService</a>
-			</li>
-		</ul>
-	</dd>
-	
 
     
 
@@ -2185,15 +2118,6 @@
 
 	
 
-	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#start_">ServiceContainer#start_</a>
-			</li>
-		</ul>
-	</dd>
 	
 
     
@@ -2304,15 +2228,6 @@
 
 	
 
-	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#stop_">ServiceContainer#stop_</a>
-			</li>
-		</ul>
-	</dd>
 	
 
     
@@ -2484,15 +2399,6 @@
 	
 
 	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#toAbsolutePath">ServiceContainer#toAbsolutePath</a>
-			</li>
-		</ul>
-	</dd>
-	
 
     
 
@@ -2604,15 +2510,6 @@
 	
 
 	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#event:configLoaded">ServiceContainer#event:configLoaded</a>
-			</li>
-		</ul>
-	</dd>
-	
 
     
 
@@ -2696,15 +2593,6 @@
 	
 
 	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#event:ready">ServiceContainer#event:ready</a>
-			</li>
-		</ul>
-	</dd>
-	
 
     
 
@@ -2787,15 +2675,6 @@
 
 	
 
-	
-	<dt class="inherited-from method-doc-label method-doc-details-label">Inherited From:</dt>
-	<dd class="inherited-from">
-		<ul class="dummy">
-			<li>
-				<a href="ServiceContainer.html#event:stopping">ServiceContainer#event:stopping</a>
-			</li>
-		</ul>
-	</dd>
 	
 
     

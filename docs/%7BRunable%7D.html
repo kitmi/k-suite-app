@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>@k-suite/app Module: Feature_DevConfigByGitUser</title>
+	<title>@k-suite/app Class: {Runable}</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -33,21 +33,21 @@
 			<li class="dropdown">
 				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="module-Feature.html">Feature</a></li><li><a href="module-Feature_Bootstrap.html">Feature_Bootstrap</a></li><li><a href="module-Feature_CommandLineOptions.html">Feature_CommandLineOptions</a></li><li><a href="module-Feature_CustomConfig.html">Feature_CustomConfig</a></li><li><a href="module-Feature_DevConfigByGitUser.html">Feature_DevConfigByGitUser</a></li><li><a href="module-Feature_FeatureRegistry.html">Feature_FeatureRegistry</a></li><li><a href="module-Feature_Loggers.html">Feature_Loggers</a></li><li><a href="module-Feature_ObjectStore.html">Feature_ObjectStore</a></li><li><a href="module-Feature_Settings.html">Feature_Settings</a></li><li><a href="module-Feature_Timezone.html">Feature_Timezone</a></li><li><a href="module-Feature_Version.html">Feature_Version</a></li><li><a href="module-Helpers.html">Helpers</a></li><li><a href="module-Literal.html">Literal</a></li>
+					<li><a href="module-Feature.html">Feature</a></li><li><a href="module-Feature_Bootstrap.html">Feature_Bootstrap</a></li><li><a href="module-Feature_CommandLineOptions.html">Feature_CommandLineOptions</a></li><li><a href="module-Feature_CustomConfig.html">Feature_CustomConfig</a></li><li><a href="module-Feature_DevConfigByGitUser.html">Feature_DevConfigByGitUser</a></li><li><a href="module-Feature_FeatureRegistry.html">Feature_FeatureRegistry</a></li><li><a href="module-Feature_Loggers.html">Feature_Loggers</a></li><li><a href="module-Feature_ObjectStore.html">Feature_ObjectStore</a></li><li><a href="module-Feature_Settings.html">Feature_Settings</a></li><li><a href="module-Feature_Timezone.html">Feature_Timezone</a></li><li><a href="module-Feature_Version.html">Feature_Version</a></li><li><a href="module-Literal.html">Literal</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="App.html">App</a></li><li><a href="Runable.html">Runable</a></li><li><a href="Runable_.html">Runable(T)</a></li><li><a href="ServiceContainer.html">ServiceContainer</a></li>
+					<li><a href="App.html">App</a></li><li><a href="ServiceContainer.html">ServiceContainer</a></li><li>{<a href="Runable.html">Runable</a>}</li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="mixins.list.html" class="dropdown-toggle" data-toggle="dropdown">Mixins<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="module-Helpers.withExtraInfo.html">Helpers.withExtraInfo</a></li><li><a href="module-Helpers.withName.html">Helpers.withName</a></li>
+					<li><a href="Runable.html">Runable</a></li><li><a href="withExtraInfo.html">withExtraInfo</a></li><li><a href="withName.html">withName</a></li>
 				</ul>
 			</li>
 			
@@ -55,6 +55,13 @@
 				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
 					<li><a href="App.html#event:configLoaded">App#event:configLoaded</a></li><li><a href="App.html#event:ready">App#event:ready</a></li><li><a href="App.html#event:stopping">App#event:stopping</a></li><li><a href="ServiceContainer.html#event:configLoaded">ServiceContainer#event:configLoaded</a></li><li><a href="ServiceContainer.html#event:ready">ServiceContainer#event:ready</a></li><li><a href="ServiceContainer.html#event:stopping">ServiceContainer#event:stopping</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#start_">start_</a></li><li><a href="global.html#stop_">stop_</a></li><li><a href="global.html#tryRequire">tryRequire</a></li>
 				</ul>
 			</li>
 			
@@ -86,10 +93,15 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Module: Feature_DevConfigByGitUser</h1>
+	<h1 class="page-title">Class: {Runable}</h1>
 <section>
 
 <header>
+    
+        <h2>
+        {Runable}
+        </h2>
+        
     
 </header>
 
@@ -98,167 +110,14 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>Enable developer specific config identified by git user name.</p></div>
-        
-
-        
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
-	<dd class="tag-source">
-		features/devConfigByGitUser.js
-	</dd>
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        <dl>
-            
-<hr>
-<dt class="name" id=".type">
-    <h4 id=".type"><span class="type-signature">&lt;static> </span>type<span class="type-signature"> :string</span></h4>
-
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>This feature is loaded at configuration stage</p>
-    </div>
-    
-
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">string</span>
-
-
-
-            </li>
-        </ul>
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
-	<dd class="tag-source">
-		features/devConfigByGitUser.js
-	</dd>
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-</dd>
-
-        </dl>
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        <dl>
-            
 <hr>
 <dt>
-    <h4 class="name" id=".load_"><span class="type-signature">&lt;static> </span>load_(app, options)</h4>
+    <h4 class="name" id="{Runable}"><span class="type-signature"></span>new {Runable}(name [, options])</h4>
     
     
 </dt>
 <dd>
 
-    
-    <div class="description">
-        <p>Load the feature</p>
-    </div>
     
 
     
@@ -269,73 +128,6 @@
     
         <h5>Parameters:</h5>
         
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>app</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="App.html">App</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The cli app module object</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Options for the feature</p>
-                <h6 class="method-params-label method-subparams-label">Properties</h6>
-                
 
 <table class="params table table-striped">
     <thead>
@@ -361,13 +153,45 @@
 
         <tr>
             
-                <td class="name"><code>altUserForTest</code></td>
+                <td class="name"><code>name</code></td>
             
 
             <td class="type">
             
                 
 <span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The name of the application.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
 
 
 
@@ -388,14 +212,7 @@
 
             
 
-            <td class="description last"><p>Alternative username for test purpose, if given, this feature will not get git user but use this given value instead</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
+            <td class="description last"><p>Application options</p></td>
         </tr>
 
     
@@ -406,6 +223,69 @@
 
     
 <dl class="details">
+    
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options.logger</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Logger options</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
     
 
 	
@@ -437,7 +317,7 @@
 	
 	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
-		features/devConfigByGitUser.js
+		Runable.js
 	</dd>
 	
 
@@ -460,31 +340,25 @@
     
 
     
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;*></span>
-
-
-
-    </dd>
-</dl>
-
-
-        
 
     
 </dd>
 
-        </dl>
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
     
 
     

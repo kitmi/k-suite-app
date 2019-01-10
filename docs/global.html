@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>@k-suite/app Module: Feature_DevConfigByGitUser</title>
+	<title>@k-suite/app Global</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -40,7 +40,7 @@
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="App.html">App</a></li><li><a href="Runable.html">Runable</a></li><li><a href="Runable_.html">Runable(T)</a></li><li><a href="ServiceContainer.html">ServiceContainer</a></li>
+					<li><a href="App.html">App</a></li><li><a href="Runable.html">Runable</a></li><li><a href="ServiceContainer.html">ServiceContainer</a></li>
 				</ul>
 			</li>
 			
@@ -55,6 +55,13 @@
 				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
 					<li><a href="App.html#event:configLoaded">App#event:configLoaded</a></li><li><a href="App.html#event:ready">App#event:ready</a></li><li><a href="App.html#event:stopping">App#event:stopping</a></li><li><a href="ServiceContainer.html#event:configLoaded">ServiceContainer#event:configLoaded</a></li><li><a href="ServiceContainer.html#event:ready">ServiceContainer#event:ready</a></li><li><a href="ServiceContainer.html#event:stopping">ServiceContainer#event:stopping</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#stop_">stop_</a></li>
 				</ul>
 			</li>
 			
@@ -86,10 +93,15 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Module: Feature_DevConfigByGitUser</h1>
+	<h1 class="page-title">Global</h1>
 <section>
 
 <header>
+    
+        <h2>
+        
+        </h2>
+        
     
 </header>
 
@@ -97,8 +109,6 @@
 <article>
     <div class="container-overview">
     
-        
-            <div class="description"><p>Enable developer specific config identified by git user name.</p></div>
         
 
         
@@ -131,11 +141,6 @@
 
 
 
-	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
-	<dd class="tag-source">
-		features/devConfigByGitUser.js
-	</dd>
 	
 
 	
@@ -166,15 +171,15 @@
         <dl>
             
 <hr>
-<dt class="name" id=".type">
-    <h4 id=".type"><span class="type-signature">&lt;static> </span>type<span class="type-signature"> :string</span></h4>
+<dt class="name" id="module:Feature">
+    <h4 id="module:Feature"><span class="type-signature">&lt;readonly> </span>module:Feature<span class="type-signature"> :string</span></h4>
 
     
 </dt>
 <dd>
     
     <div class="description">
-        <p>This feature is loaded at configuration stage</p>
+        <p>Feature level definitions.</p>
     </div>
     
 
@@ -193,6 +198,215 @@
 
     
 <dl class="details">
+    
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>CONF</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    Configure
+                
+                </td>
+            
+
+            <td class="description last"><p>Configuration</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>INIT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    Initial
+                
+                </td>
+            
+
+            <td class="description last"><p>Initialization, e.g. bootstrap, settings</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>SERVICE</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    Services
+                
+                </td>
+            
+
+            <td class="description last"><p>Services, e.g. loggers, i18n</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>PLUGIN</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    Plugins
+                
+                </td>
+            
+
+            <td class="description last"><p>Loading plugins, e.g. middlewares</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>FINAL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    Final
+                
+                </td>
+            
+
+            <td class="description last"><p>Final preparation before service container get into work</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>validate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Validate a feature object.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
     
 
 	
@@ -224,7 +438,264 @@
 	
 	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
-		features/devConfigByGitUser.js
+		enum/Feature.js
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt class="name" id="module:Literal">
+    <h4 id="module:Literal"><span class="type-signature">&lt;readonly> </span>module:Literal<span class="type-signature"> :string</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Common constant definitions.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>DEFAULT_CONFIG_PATH</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    conf
+                
+                </td>
+            
+
+            <td class="description last"><p>Config files path</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>FEATURES_PATH</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    features
+                
+                </td>
+            
+
+            <td class="description last"><p>Feature files path</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>APP_CFG_NAME</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    app
+                
+                </td>
+            
+
+            <td class="description last"><p>App config file name</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>DEFAULT_BOOTSTRAP_PATH</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    bootstrap
+                
+                </td>
+            
+
+            <td class="description last"><p>Default bootrap path</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>DEFAULT_TIMEZONE</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    Australia/Sydney
+                
+                </td>
+            
+
+            <td class="description last"><p>Default timezone</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		enum/Literal.js
 	</dd>
 	
 
@@ -249,7 +720,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".load_"><span class="type-signature">&lt;static> </span>load_(app, options)</h4>
+    <h4 class="name" id="stop_"><span class="type-signature">&lt;async> </span>stop_()</h4>
     
     
 </dt>
@@ -257,7 +728,7 @@
 
     
     <div class="description">
-        <p>Load the feature</p>
+        <p>Stop the app</p>
     </div>
     
 
@@ -266,142 +737,6 @@
     
 
     
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>app</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="App.html">App</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The cli app module object</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Options for the feature</p>
-                <h6 class="method-params-label method-subparams-label">Properties</h6>
-                
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Argument</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>altUserForTest</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Alternative username for test purpose, if given, this feature will not get git user but use this given value instead</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
     
 
     
@@ -437,7 +772,7 @@
 	
 	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
-		features/devConfigByGitUser.js
+		Runable.js
 	</dd>
 	
 
@@ -471,7 +806,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;*></span>
+<span class="param-type">Promise</span>
 
 
 
