@@ -25,7 +25,3 @@ Thumbs.db
 ######################
 test/temp
 .nyc_output
-
-# built files #
-######################
-lib
