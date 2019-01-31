@@ -27,12 +27,14 @@ module.exports = {
      * @returns {Promise.<*>}
      */
     load_: async (app, options) => {
-        let devName = options.altUserForTest || Util.runCmdSync('git config --global user.name').trim();
+        let devName = options.altUserForTest || Util.runCmdSync('git config --global user.email').trim();
         if (devName === '') {
             throw new Error('Unable to read "user.name" of git config.');
         }            
 
-        app.configLoader.provider = new JsonConfigProvider(path.join(app.configPath, app.configName, devName));
+        devName = devName.substr(0, devName.indexOf('@'));
+
+        app.configLoader.provider = new JsonConfigProvider(path.join(app.configPath, app.configName + '.' + devName));
         return app.loadConfig_();
     }
 };

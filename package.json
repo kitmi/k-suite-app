@@ -1,6 +1,6 @@
 {
   "name": "@k-suite/app",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "General Application Template",
   "main": "lib/index.js",
   "publishConfig": {
@@ -59,7 +59,7 @@
   },
   "dependencies": {
     "rk-config": "^2.0.0",
-    "rk-utils": "^2.1.8",
+    "rk-utils": "^2.2.0",
     "winston": "^3.1.0",
     "winstonflight": "^1.0.4"
   },
