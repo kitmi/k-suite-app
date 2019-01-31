@@ -34,7 +34,7 @@ module.exports = {
 
         devName = devName.substr(0, devName.indexOf('@'));
 
-        app.configLoader.provider = new JsonConfigProvider(path.join(app.configPath, app.configName + '.' + devName));
+        app.configLoader.provider = new JsonConfigProvider(path.join(app.configPath, app.configName + '.' + devName + '.json'));
         return app.loadConfig_();
     }
 };
