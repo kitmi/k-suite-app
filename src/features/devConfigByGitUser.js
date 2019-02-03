@@ -7,7 +7,7 @@
 
 const path = require('path');
 const Feature = require('../enum/Feature');
-const Util = require('rk-utils');
+const { fs, runCmdSync } = require('rk-utils');
 
 const JsonConfigProvider = require('rk-config/lib/JsonConfigProvider');
 
@@ -27,14 +27,25 @@ module.exports = {
      * @returns {Promise.<*>}
      */
     load_: async (app, options) => {
-        let devName = options.altUserForTest || Util.runCmdSync('git config --global user.email').trim();
+        let devName;
+        
+        try {
+            devName = options.altUserForTest || runCmdSync('git config --global user.email').trim();            
+        } catch (error) {
+
+        }
+
         if (devName === '') {
-            throw new Error('Unable to read "user.name" of git config.');
+            app.log('warn', 'Unable to read "user.email" of git config.');
+            return;
         }            
 
         devName = devName.substr(0, devName.indexOf('@'));
 
-        app.configLoader.provider = new JsonConfigProvider(path.join(app.configPath, app.configName + '.' + devName + '.json'));
-        return app.loadConfig_();
+        const devConfigFile = path.join(app.configPath, app.configName + '.' + devName + '.json');
+        if (fs.existsSync(devConfigFile)) {
+            app.configLoader.provider = new JsonConfigProvider(devConfigFile);
+            await app.loadConfig_();
+        }
     }
 };
