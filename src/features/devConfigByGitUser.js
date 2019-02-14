@@ -23,29 +23,36 @@ module.exports = {
      * Load the feature
      * @param {App} app - The cli app module object
      * @param {object} options - Options for the feature     
-     * @param {string} [options.altUserForTest] - Alternative username for test purpose, if given, this feature will not get git user but use this given value instead
+     * @property {string} [options.fallbackName] - Fallback username for git user not available
      * @returns {Promise.<*>}
      */
     load_: async (app, options) => {
         let devName;
         
         try {
-            devName = options.altUserForTest || runCmdSync('git config --global user.email').trim();            
-        } catch (error) {
-
-        }
+            devName = runCmdSync('git config --global user.email').trim();            
+        } catch (e) {
+            app.log('warn', e.message || e);
+        }        
 
         if (devName === '') {
-            app.log('warn', 'Unable to read "user.email" of git config.');
-            return;
+            if (options.fallbackName) {
+                devName = options.fallbackName;
+            } else {
+                app.log('warn', 'Unable to read "user.email" of git config and no fallback option is configured.');
+                return;
+            }            
         }            
 
         devName = devName.substr(0, devName.indexOf('@'));
 
         const devConfigFile = path.join(app.configPath, app.configName + '.' + devName + '.json');
-        if (fs.existsSync(devConfigFile)) {
-            app.configLoader.provider = new JsonConfigProvider(devConfigFile);
-            await app.loadConfig_();
+        if (!fs.existsSync(devConfigFile)) {
+            app.log('warn', `Developer specific config file "${devConfigFile}" does not exist and will use defaults.`);
+            return;
         }
+
+        app.configLoader.provider = new JsonConfigProvider(devConfigFile);
+        return app.loadConfig_();
     }
 };
