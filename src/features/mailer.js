@@ -1,4 +1,4 @@
-const Feature = require('@k-suite/app/lib/enum/Feature');
+const Feature = require('../enum/Feature');
 const nodemailer = require('nodemailer');
 
 module.exports = {
