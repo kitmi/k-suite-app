@@ -1,5 +1,6 @@
 const Feature = require('../enum/Feature');
-const nodemailer = require('nodemailer');
+const { tryRequire } = require('../utils/Helpers');
+const nodemailer = tryRequire('nodemailer');
 
 module.exports = {
 
