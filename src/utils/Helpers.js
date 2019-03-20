@@ -5,6 +5,8 @@
  * @module Helpers
  */ 
 
+ const { _ } = require('rk-utils');
+
  /**
   * @param {string|array.<string>} features - Dependencies of other features.
   * @param {ServiceContainer} app - Origin service container app.
