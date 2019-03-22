@@ -15,7 +15,9 @@ const Logger = require('winston/lib/winston/logger');
  */
 const Runable = T => class extends T {
     _onUncaughtException = err => {
-        this.log('error', err);
+        this.log('error', err, () => {
+            process.exit(1);
+        });
     };        
 
     _onWarning = warning => {
