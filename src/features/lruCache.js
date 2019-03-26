@@ -7,6 +7,7 @@
 
 const Feature = require('../enum/Feature');
 const { tryRequire } = require('../utils/Helpers');
+const { _ } = require('rk-utils');
 
 module.exports = {
 
@@ -29,7 +30,7 @@ module.exports = {
 
         //pre-create
         if (resourceOptions.resources) {
-            resourceOptions.resources.forEach((options, resource) => {
+            _.map(resourceOptions.resources, (options, resource) => {
                 let cache = new LRU(options);
                 app.registerService('lruCache:' + resource, cache);
             });
