@@ -59,7 +59,7 @@
   },
   "dependencies": {
     "rk-config": "^2.0.1",
-    "rk-utils": "^2.2.0",
+    "rk-utils": "^2.2.1",
     "winston": "^3.1.0",
     "winstonflight": "^1.0.4"
   },
