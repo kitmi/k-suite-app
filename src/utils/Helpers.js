@@ -64,20 +64,6 @@ exports.tryRequire = function (packageName) {
 };
 
 /**
- * Adds a status property to the class.
- * @mixin
- * @param {*} Base 
- * @param {*} STATUS 
- */
-exports.withStatus = (Base, STATUS) => class extends Base {
-    /**
-     * Status code.
-     * @member {number}
-     */
-    status = STATUS;
-};
-
-/**
  * Add a expose property to the error object.
  * @mixin
  * @param {*} Base 
