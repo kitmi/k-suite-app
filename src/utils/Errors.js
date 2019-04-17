@@ -15,7 +15,7 @@ const RequestError = withExpose(RichInfoError);
  * @class
  * @extends RichInfoError  
  */
-class AppError extends RichInfoError {
+class ApplicationError extends RichInfoError {
     /**     
      * @param {string} message - Error message
      * @param {*} code 
@@ -44,9 +44,9 @@ class AppError extends RichInfoError {
 /**
  * Error caused by invalid configuration.
  * @class
- * @extends AppError  
+ * @extends ApplicationError  
  */
-class InvalidConfiguration extends AppError {
+class InvalidConfiguration extends ApplicationError {
     /**
      * @param {string} message - Error message
      * @param {App} [app] - The related app module
@@ -58,6 +58,6 @@ class InvalidConfiguration extends AppError {
 }
 
 exports.RequestError = RequestError;
-exports.AppError = AppError;
+exports.ApplicationError = ApplicationError;
 exports.RichInfoError = RichInfoError;
 exports.InvalidConfiguration = InvalidConfiguration;
