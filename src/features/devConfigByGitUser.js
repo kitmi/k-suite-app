@@ -35,7 +35,7 @@ module.exports = {
             app.log('warn', e.message || e);
         }        
 
-        if (devName === '') {
+        if (!devName || devName === '') {
             if (options.fallbackName) {
                 devName = options.fallbackName;
             } else {
