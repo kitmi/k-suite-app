@@ -20,7 +20,7 @@ module.exports = {
      */
     CONF: 'Configure',
     /**
-     * Initialization, e.g. bootstrap, settings
+     * Initialization, e.g. settings
      */
     INIT: 'Initial',    
     /**
@@ -28,13 +28,13 @@ module.exports = {
      */
     SERVICE: 'Services',       
     /**
-     * Loading plugins, e.g. middlewares
+     * Loading plugins, e.g. middlewares, bootstrap
      */
     PLUGIN: 'Plugins',
     /**
      * Final preparation before service container get into work
      */
-    FINAL: 'Final',
+    FINAL: 'Final', 
 
     /**
      * Validate a feature object.

@@ -13,10 +13,10 @@ const Util = require('rk-utils');
 module.exports = {
 
     /**
-     * This feature is loaded at init stage
+     * This feature is loaded at plugin stage
      * @member {string}
      */
-    type: Feature.INIT,
+    type: Feature.PLUGIN,
 
     /**
      * Load the feature
