@@ -58,8 +58,8 @@
     "winston-mongodb": "github:kitmi/winston-mongodb"
   },
   "dependencies": {
-    "rk-config": "^2.0.1",
-    "rk-utils": "^2.2.1",
+    "rk-config": "^2.0.2",
+    "rk-utils": "^2.2.2",
     "winston": "^3.1.0",
     "winstonflight": "^1.0.4"
   },
