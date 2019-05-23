@@ -24,7 +24,8 @@ class ServiceContainer extends EventEmitter {
      * @property {string} [options.workingPath] - App's working path, default to process.cwd()
      * @property {string} [options.configPath] - App's config path, default to "conf" under workingPath
      * @property {string} [options.configName] - App's config basename, default to "app"
-     * @property {string} [options.disableEnvAwareConfig=false] - Don't use environment-aware config     
+     * @property {string} [options.disableEnvAwareConfig=false] - Don't use environment-aware config
+     * @property {array} [options.allowedFeatures] - A list of enabled feature names
      */
     constructor(name, options) {
         super();
@@ -234,7 +235,7 @@ class ServiceContainer extends EventEmitter {
      * @returns {ServiceContainer}
      */
     log(level, message, ...rest) {
-        this.logger.log(level, message, ...rest);
+        this.logger && this.logger.log(level, message, ...rest);
         return this;
     }
 
@@ -261,10 +262,17 @@ class ServiceContainer extends EventEmitter {
 
         // load features
         _.forOwn(this.config, (featureOptions, name) => {
+            if (this.options.allowedFeatures &&
+                this.options.allowedFeatures.indexOf(name) === -1) {
+                //skip disabled features
+                return;
+            }
+
             let feature;
             try {
                 feature = this._loadFeature(name);                                
-            } catch (err) {                
+            } catch (err) {     
+                console.error(err);           
             }   
             
             if (feature && feature.type === Feature.CONF) {                
@@ -292,6 +300,12 @@ class ServiceContainer extends EventEmitter {
 
         // load features
         _.forOwn(this.config, (featureOptions, name) => {
+            if (this.options.allowedFeatures &&
+                this.options.allowedFeatures.indexOf(name) === -1) {
+                //skip disabled features
+                return;
+            }
+
             let feature = this._loadFeature(name);
 
             if (!(feature.type in featureGroups)) {
