@@ -72,12 +72,14 @@ describe('builtin features', function () {
         let biLogger = cliApp.getService('logger:bi');
         should.exist(biLogger);
 
-        biLogger.info('log message', { event: 'test', data: [ 'a', 'b' ] });
+        biLogger.log('info', 'log message', { event: 'test', data: [ 'a', 'b' ] });
 
         return new Promise((resolve, reject) => {
             setTimeout(() => {            
                 let mongoUrl = process.env.USER_MONGODB_URL || 'mongodb://root:root@localhost:27017/bi-logs?authSource=admin';
-                const MongoClient = require('mongodb').MongoClient;            
+                const MongoClient = require('mongodb').MongoClient;       
+                
+                console.log(mongoUrl);
                 
                 let client = new MongoClient(mongoUrl, { useNewUrlParser: true });
 
@@ -89,8 +91,15 @@ describe('builtin features', function () {
                     let collection = db.collection('log');
 
                     collection.findOne({ "meta.event": "test" }, function(err2, doc) {
-                        if (err2) return reject(err2);
+                        if (err2) {
+                            console.error(err2);
+                            return reject(err2);
+                        }
+
+                        console.log(doc);
                         
+                        should.exist(doc);
+                        should.exist(doc.meta);
                         should.exist(doc.meta.data);
                         doc.meta.data.length.should.be.exactly(2);
 

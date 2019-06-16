@@ -39,6 +39,7 @@ const Runable = T => class extends T {
     constructor(name, options) {
         super(name, {
             logger: {
+                "useMetaKey": "metadata",
                 "level": "info",
                 "transports": [
                     {
