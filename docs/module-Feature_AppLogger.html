@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>@k-suite/app Module: Feature_Settings</title>
+	<title>@k-suite/app Module: Feature_AppLogger</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -93,7 +93,7 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Module: Feature_Settings</h1>
+	<h1 class="page-title">Module: Feature_AppLogger</h1>
 <section>
 
 <header>
@@ -105,7 +105,7 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>Enable customized settings</p></div>
+            <div class="description"><p>Replace the default app logger</p></div>
         
 
         
@@ -141,7 +141,7 @@
 	
 	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
-		features/settings.js
+		features/appLogger.js
 	</dd>
 	
 
@@ -181,7 +181,7 @@
 <dd>
     
     <div class="description">
-        <p>This feature is loaded at init stage</p>
+        <p>This feature is loaded at plugin stage</p>
     </div>
     
 
@@ -231,7 +231,7 @@
 	
 	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
-		features/settings.js
+		features/appLogger.js
 	</dd>
 	
 
@@ -256,7 +256,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".load_"><span class="type-signature">&lt;static> </span>load_(app, settings)</h4>
+    <h4 class="name" id=".load_"><span class="type-signature">&lt;static> </span>load_(app, loggerName)</h4>
     
     
 </dt>
@@ -323,13 +323,13 @@
 
         <tr>
             
-                <td class="name"><code>settings</code></td>
+                <td class="name"><code>loggerName</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">string</span>
 
 
 
@@ -340,7 +340,7 @@
 
             
 
-            <td class="description last"><p>Customized settings</p></td>
+            <td class="description last"><p>The logger name</p></td>
         </tr>
 
     
@@ -382,7 +382,7 @@
 	
 	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
-		features/settings.js
+		features/appLogger.js
 	</dd>
 	
 
@@ -405,26 +405,6 @@
     
 
     
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;*></span>
-
-
-
-    </dd>
-</dl>
-
-
-        
 
     
 </dd>

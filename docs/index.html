@@ -33,21 +33,21 @@
 			<li class="dropdown">
 				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="module-Feature.html">Feature</a></li><li><a href="module-Feature_Bootstrap.html">Feature_Bootstrap</a></li><li><a href="module-Feature_CommandLineOptions.html">Feature_CommandLineOptions</a></li><li><a href="module-Feature_ConfigByHostname.html">Feature_ConfigByHostname</a></li><li><a href="module-Feature_CustomConfig.html">Feature_CustomConfig</a></li><li><a href="module-Feature_DevConfigByGitUser.html">Feature_DevConfigByGitUser</a></li><li><a href="module-Feature_FeatureRegistry.html">Feature_FeatureRegistry</a></li><li><a href="module-Feature_Loggers.html">Feature_Loggers</a></li><li><a href="module-Feature_ObjectStore.html">Feature_ObjectStore</a></li><li><a href="module-Feature_Settings.html">Feature_Settings</a></li><li><a href="module-Feature_Timezone.html">Feature_Timezone</a></li><li><a href="module-Feature_Version.html">Feature_Version</a></li><li><a href="module-Helpers.html">Helpers</a></li><li><a href="module-Literal.html">Literal</a></li>
+					<li><a href="module-Errors.html">Errors</a></li><li><a href="module-Feature.html">Feature</a></li><li><a href="module-Feature_AppLogger.html">Feature_AppLogger</a></li><li><a href="module-Feature_Bootstrap.html">Feature_Bootstrap</a></li><li><a href="module-Feature_CommandLineOptions.html">Feature_CommandLineOptions</a></li><li><a href="module-Feature_ConfigByHostname.html">Feature_ConfigByHostname</a></li><li><a href="module-Feature_CustomConfig.html">Feature_CustomConfig</a></li><li><a href="module-Feature_DataSource.html">Feature_DataSource</a></li><li><a href="module-Feature_DevConfigByGitUser.html">Feature_DevConfigByGitUser</a></li><li><a href="module-Feature_FeatureRegistry.html">Feature_FeatureRegistry</a></li><li><a href="module-Feature_Loggers.html">Feature_Loggers</a></li><li><a href="module-Feature_LruCache.html">Feature_LruCache</a></li><li><a href="module-Feature_ObjectStore.html">Feature_ObjectStore</a></li><li><a href="module-Feature_Settings.html">Feature_Settings</a></li><li><a href="module-Feature_Timezone.html">Feature_Timezone</a></li><li><a href="module-Feature_Version.html">Feature_Version</a></li><li><a href="module-Helpers.html">Helpers</a></li><li><a href="module-Literal.html">Literal</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="App.html">App</a></li><li><a href="Runable.html">Runable</a></li><li><a href="Runable_.html">Runable(T)</a></li><li><a href="ServiceContainer.html">ServiceContainer</a></li>
+					<li><a href="App.html">App</a></li><li><a href="module-Errors-ApplicationError.html">Errors~ApplicationError</a></li><li><a href="module-Errors-InvalidConfiguration.html">Errors~InvalidConfiguration</a></li><li><a href="Runable.html">Runable</a></li><li><a href="Runable_.html">Runable(T)</a></li><li><a href="ServiceContainer.html">ServiceContainer</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="mixins.list.html" class="dropdown-toggle" data-toggle="dropdown">Mixins<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="module-Helpers.withExtraInfo.html">Helpers.withExtraInfo</a></li><li><a href="module-Helpers.withName.html">Helpers.withName</a></li>
+					<li><a href="module-Helpers.withExpose.html">Helpers.withExpose</a></li><li><a href="module-Helpers.withExtraInfo.html">Helpers.withExtraInfo</a></li><li><a href="module-Helpers.withName.html">Helpers.withName</a></li>
 				</ul>
 			</li>
 			
@@ -55,6 +55,13 @@
 				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
 					<li><a href="App.html#event:configLoaded">App#event:configLoaded</a></li><li><a href="App.html#event:ready">App#event:ready</a></li><li><a href="App.html#event:stopping">App#event:stopping</a></li><li><a href="ServiceContainer.html#event:configLoaded">ServiceContainer#event:configLoaded</a></li><li><a href="ServiceContainer.html#event:ready">ServiceContainer#event:ready</a></li><li><a href="ServiceContainer.html#event:stopping">ServiceContainer#event:stopping</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#replaceLogger">replaceLogger</a></li>
 				</ul>
 			</li>
 			
@@ -107,12 +114,15 @@
 
 
     <section class="readme-section">
-        <article><h1>@k-suite/app</h1><p>Micro service app library</p>
-<h2>example</h2><h3>usage</h3><pre class="prettyprint source"><code>const CliApp = require('@k-suite/app');
+        <article><h1>@k-suite/app</h1>
+<p>Micro service app library</p>
+<h2>example</h2>
+<h3>usage</h3>
+<pre><code>const CliApp = require('@k-suite/app');
 
 let cliApp = new CliApp('test');
 
-cliApp.start_().then(() => {
+cliApp.start_().then(() =&gt; {
     cliApp.log('info', 'started.');
 
     cliApp.showUsage();
@@ -127,13 +137,16 @@ cliApp.start_().then(() => {
     tracer.info(cliApp.settings.parser.lib);
 
     return cliApp.stop_();
-}).catch(error => {
+}).catch(error =&gt; {
     console.error(error);
     process.exit(1);
-});</code></pre><h3>sample app config</h3><pre class="prettyprint source"><code>{
+});
+</code></pre>
+<h3>sample app config</h3>
+<pre><code>{
     &quot;version&quot;: &quot;1.0&quot;,
     &quot;cmdLineOptions&quot;: {
-        &quot;banner&quot;: &quot;#!jsv: (app) => `This is the program banner v${app.version}`&quot;,
+        &quot;banner&quot;: &quot;#!jsv: (app) =&gt; `This is the program banner v${app.version}`&quot;,
         &quot;arguments&quot;: [
             { &quot;name&quot;: &quot;target file&quot;, &quot;required&quot;: true }
         ],  
@@ -195,7 +208,10 @@ cliApp.start_().then(() => {
             ]
         }
     }
-}</code></pre><h2>License</h2><p>  MIT    </p></article>
+}
+</code></pre>
+<h2>License</h2>
+<p>MIT</p></article>
     </section>
 
 
@@ -243,7 +259,7 @@ cliApp.start_().then(() => {
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a>
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

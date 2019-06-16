@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>@k-suite/app Module: Feature_Settings</title>
+	<title>@k-suite/app Module: Feature_LruCache</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -93,7 +93,7 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Module: Feature_Settings</h1>
+	<h1 class="page-title">Module: Feature_LruCache</h1>
 <section>
 
 <header>
@@ -105,7 +105,7 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>Enable customized settings</p></div>
+            <div class="description"><p>Enable LRU cache feature</p></div>
         
 
         
@@ -141,7 +141,7 @@
 	
 	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
-		features/settings.js
+		features/lruCache.js
 	</dd>
 	
 
@@ -181,7 +181,7 @@
 <dd>
     
     <div class="description">
-        <p>This feature is loaded at init stage</p>
+        <p>This feature is loaded at service stage</p>
     </div>
     
 
@@ -231,7 +231,7 @@
 	
 	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
-		features/settings.js
+		features/lruCache.js
 	</dd>
 	
 
@@ -256,7 +256,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".load_"><span class="type-signature">&lt;static> </span>load_(app, settings)</h4>
+    <h4 class="name" id=".load_"><span class="type-signature">&lt;static> </span>load_(app, resourceOptions)</h4>
     
     
 </dt>
@@ -316,14 +316,14 @@
 
             
 
-            <td class="description last"><p>The cli app module object</p></td>
+            <td class="description last"><p>The app module object</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>settings</code></td>
+                <td class="name"><code>resourceOptions</code></td>
             
 
             <td class="type">
@@ -340,7 +340,7 @@
 
             
 
-            <td class="description last"><p>Customized settings</p></td>
+            <td class="description last"><p>The cache options for specified resource</p></td>
         </tr>
 
     
@@ -351,6 +351,101 @@
 
     
 <dl class="details">
+    
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>resourceOptions.default</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Default options, will be overrided by resource-specific options if any</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>resourceOptions.resources</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Resource-specific options</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
     
 
 	
@@ -382,7 +477,7 @@
 	
 	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
 	<dd class="tag-source">
-		features/settings.js
+		features/lruCache.js
 	</dd>
 	
 

@@ -1,7 +1,7 @@
 {    
     "settings": {
         "parser": {
-            "lib": "default"
+            "lib": "override"
         }
     }
 }

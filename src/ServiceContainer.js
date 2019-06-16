@@ -99,8 +99,8 @@ class ServiceContainer extends EventEmitter {
              * @member {ConfigLoader}         
              */
             this.configLoader = this.options.disableEnvAwareConfig ? 
-                new ConfigLoader(new JsonConfigProvider(path.join(this.configPath, this.configName + '.json'))) : 
-                ConfigLoader.createEnvAwareJsonLoader(this.configPath, this.configName, this.env);
+                new ConfigLoader(new JsonConfigProvider(path.join(this.configPath, this.configName + '.json')), this) : 
+                ConfigLoader.createEnvAwareJsonLoader(this.configPath, this.configName, this.env, this);
             
             await this.loadConfig_();     
         }   

@@ -47,13 +47,6 @@ const Runable = T => class extends T {
                         "options": {                            
                             "format": winston.format.combine(winston.format.colorize(), winston.format.simple())
                         }
-                    },
-                    {
-                        "type": "file",
-                        "options": {
-                            "level": "info",
-                            "filename": `${name && _.kebabCase(name) || 'app'}.log`
-                        }
                     }
                 ],
                 ...(options && options.logger)
@@ -89,6 +82,19 @@ const Runable = T => class extends T {
                 resolve(this);
             }, 0);
         });
+    }
+
+    /**
+     * Replace the default logger set on creation of the app.
+     * @param {Logger} logger 
+     */
+    replaceLogger(logger) {
+        this._injectLogger(true /* detact */);
+
+        this.logger = logger;
+        this._externalLogger = true;
+
+        this.log('verbose', 'A new logger attached.');
     }
 
     _initialize() {

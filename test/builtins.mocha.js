@@ -38,16 +38,11 @@ describe('builtin features', function () {
         cliApp.bootstrapInfo.should.equal('for test only');        
     });
 
-    it('app log file should exist', function () {
-        let logFile = cliApp.toAbsolutePath(`${APP_NAME}.log`);        
-        Util.fs.existsSync(logFile).should.be.ok();
-    });
-
     it('setting should be loaded', function () {
         should.exist(cliApp.settings);
         should.exist(cliApp.settings.parser);
         should.exist(cliApp.settings.parser.lib);
-        cliApp.settings.parser.lib.should.equal('default');        
+        cliApp.settings.parser.lib.should.equal('override');        
     });
 
     it('show usage', function () {

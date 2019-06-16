@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * Enable customer config identified by config path.
+ * Enable custom config identified by config path.
  * @module Feature_CustomConfig
  */
 

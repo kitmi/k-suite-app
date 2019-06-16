@@ -59,8 +59,8 @@
     "winston-mongodb": "^5.0.0"
   },
   "dependencies": {
-    "rk-config": "^2.0.3",
     "rk-utils": "^2.2.3",
+    "rk-config": "^2.0.4",    
     "winston": "git+https://github.com/kitmi/winston.git",
     "winstonflight": "^1.0.4"
   },
