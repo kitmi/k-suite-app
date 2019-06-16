@@ -60,7 +60,7 @@
   },
   "dependencies": {
     "rk-utils": "^2.2.3",
-    "rk-config": "^2.0.4",    
+    "rk-config": "^2.0.4",
     "winston": "git+https://github.com/kitmi/winston.git",
     "winstonflight": "^1.0.4"
   },
