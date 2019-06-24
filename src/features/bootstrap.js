@@ -22,7 +22,7 @@ module.exports = {
      * Load the feature
      * @param {App} app - The cli app module object
      * @param {object} options - Options for the feature
-     * @property {string} [options.path='boostrap'] - The path of the bootstrap scripts
+     * @property {string} [options.path='bootstrap'] - The path of the bootstrap scripts
      * @returns {Promise.<*>}
      */
     load_: async function (app, options) {

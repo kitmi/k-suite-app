@@ -17,6 +17,10 @@ const Literal = require('./enum/Literal');
  * @extends EventEmitter     
  */
 class ServiceContainer extends EventEmitter {
+    logError = (error) => {
+        return this.log('error', error.message, _.pick(error, [ 'name', 'status', 'code', 'extraInfo', 'stack' ]));
+    }
+
     /**     
      * @param {string} name - The name of the container instance.     
      * @param {object} [options] - Container options          
@@ -193,6 +197,7 @@ class ServiceContainer extends EventEmitter {
         }
 
         this.services[name] = serviceObject;
+        this.log('verbose', `Service "${name}" registered.`);
         return this;
     }
 

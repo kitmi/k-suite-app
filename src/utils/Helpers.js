@@ -51,7 +51,7 @@ exports.tryRequire = function (packageName) {
                     }
 
                     throw new Error(`Module "${packageName}" not found. Try run "npm install ${npmPkgName}" to install the dependency.`);
-                }
+                }                
 
                 return undefined;
             }
