@@ -202,6 +202,15 @@ class ServiceContainer extends EventEmitter {
     }
 
     /**
+     * Check whether a service exists
+     * @param {*} name 
+     * @returns {boolean}
+     */
+    hasService(name) {
+        return name in this.services;
+    }
+
+    /**
      * Get a service from module hierarchy     
      * @param name
      * @returns {object}
