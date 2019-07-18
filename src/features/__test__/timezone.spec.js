@@ -30,7 +30,7 @@ describe('feature:timezone', function () {
         Util.fs.removeSync(WORKING_DIR);
     });
 
-    describe('unittest', function () {
+    describe('unittest:timezone', function () {
         it('timezone should work', function (done) {            
             let start = cliApp.now()
             let isoDT = start.toISO();

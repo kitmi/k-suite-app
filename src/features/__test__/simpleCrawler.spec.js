@@ -18,8 +18,8 @@ describe('feature:objectStore', function () {
 
         cliApp.once('configLoaded', () => {
             cliApp.config = {
-                "objectStore": {
-                    "cachedObject": (app) => app.name
+                "simpleCrawler": {      
+                    "parser": "cheerio"              
                 }
             };
         });
@@ -32,13 +32,15 @@ describe('feature:objectStore', function () {
         Util.fs.removeSync(WORKING_DIR);
     });
 
-    describe('unittest:objectStore', function () {
-        it('object store should work', function () {            
-            should.exists(cliApp.store);
-            let obj = cliApp.store.ensureOne('cachedObject');
-            should.exists(obj);
+    describe('unittest:simpleCrawler', function () {
+        it('microsoft.com', async function () {            
+            let crawler = cliApp.getService('simpleCrawler');
 
-            obj.should.be.equal('test server');
+            should.exist(crawler);
+            
+            let html = await crawler.get_('http://www.microsoft.com');
+
+            (html('title').text().indexOf('Microsoft') > -1).should.be.ok();
         });
     });
 });
