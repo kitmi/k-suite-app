@@ -2,12 +2,6 @@ const { _ } = require('rk-utils');
 const Feature = require('../enum/Feature');
 const { tryRequire } = require('../utils/Helpers');
 
-const AllowedMethods = {
-    'get': 'get',
-    'post': 'post',
-    'download': 'get'
-};
-
 const basicAuth = (req, authInfo) => {
     req.auth(authInfo.username, authInfo.password);
 }

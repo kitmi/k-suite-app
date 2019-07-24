@@ -59,6 +59,7 @@
     "rk-utils": "^2.2.4",
     "shelljs": "^0.8.2",
     "should": "^13.2.3",
+    "soap": "^0.28.0",
     "source-map-support": "^0.5.9",
     "supertest": "^3.3.0",
     "winston-daily-rotate-file": "^3.3.3",

@@ -6,7 +6,7 @@ const App = require('../../../lib/App');
 
 const WORKING_DIR = path.resolve(__dirname, '../../../test/temp');
 
-describe('feature:simpleCrawler', function () {
+describe.only('feature:soapClient', function () {
     let cliApp;
 
     before(async function () {
@@ -18,8 +18,10 @@ describe('feature:simpleCrawler', function () {
 
         cliApp.once('configLoaded', () => {
             cliApp.config = {
-                "simpleCrawler": {      
-                    "parser": "cheerio"              
+                "soapClient": {      
+                    "calculator": {
+                        wsdlUrl: 'http://www.dneonline.com/calculator.asmx?WSDL'
+                    }
                 }
             };
         });
@@ -32,15 +34,22 @@ describe('feature:simpleCrawler', function () {
         Util.fs.removeSync(WORKING_DIR);
     });
 
-    describe('unittest:simpleCrawler', function () {
-        it('microsoft.com', async function () {            
-            let crawler = cliApp.getService('simpleCrawler');
+    it('abn lookup', async function () {            
+        let soapClient = cliApp.getService('soapClient.calculator');
 
-            should.exist(crawler);
-            
-            let html = await crawler.get_('http://www.microsoft.com');
+        should.exist(soapClient);
 
-            (html('title').text().indexOf('Microsoft') > -1).should.be.ok();
+        let methods = await soapClient.listMethods_();
+
+        methods.should.have.keys('Calculator');
+        
+        let body = await soapClient.call_('Add', {
+            intA: 10,
+            intB: 20
         });
+
+        body.should.have.keys('AddResult');
+
+        body.AddResult.should.be.exactly(30);
     });
 });
