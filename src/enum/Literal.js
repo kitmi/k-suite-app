@@ -38,5 +38,15 @@ module.exports = {
     /**
      * Default timezone
      */
-    DEFAULT_TIMEZONE: 'Australia/Sydney'
+    DEFAULT_TIMEZONE: 'Australia/Sydney',
+
+    /**
+     * Backend files path
+     */
+    BACKEND_PATH: 'server',
+
+    /**
+     * Models files path, under backend folder
+     */
+    MODELS_PATH: 'models'
 };
