@@ -6,6 +6,7 @@ const { _, waitUntil_, Promise } = require('rk-utils');
 class ImapClient {
     constructor(app, name, config) {
         this.app = app;
+        this.config = config;
         this.imap = new Imap(config);
 
         this.imap.on('error', error => {            
@@ -23,6 +24,7 @@ class ImapClient {
         });
 
         this.imap.once('close', () => {    
+            this.ready = false; 
             app.log('info', `The connection to imap server [${name}] is closed.`);
         });
 
@@ -77,9 +79,7 @@ class ImapClient {
 
         let messages = [];
 
-        imapFetch.on('message', (msg, seqno) => {
-            console.log('seqno', seqno);
-            
+        imapFetch.on('message', (msg, seqno) => {            
             let attributes;
             let body = [];
 

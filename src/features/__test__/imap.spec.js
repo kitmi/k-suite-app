@@ -20,11 +20,11 @@ describe.only('feature:imap', function () {
             cliApp.config = {
                 "imap": {
                     "test": {
-                        "host": "imap.gmail.com",
+                        "host": "imap.ethereal.email",
                         "port": 993,
                         "secure": true, 
-                        "user": "levo.test.2019.7@gmail.com",
-                        "password": "Levo123!",
+                        "user": "edna.stark@ethereal.email",
+                        "password": "GEJhkXPEdbtG9yh2RH",
                         "tls": true,
                         "connTimeout": 60000,
                         "authTimeout": 60000
