@@ -6,7 +6,7 @@ const App = require('../../../lib/App');
 
 const WORKING_DIR = path.resolve(__dirname, '../../../test/temp');
 
-describe.only('feature:soapClient', function () {
+describe('feature:soapClient', function () {
     let cliApp;
 
     before(async function () {

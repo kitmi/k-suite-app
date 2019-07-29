@@ -148,11 +148,16 @@ class ServiceContainer extends EventEmitter {
      * @returns {Promise.<ServiceContainer>}
      */
     async stop_() {
+        let elegantStoppers = [];
+
         /**
          * App stopping
          * @event ServiceContainer#stopping
          */
-        this.emit('stopping');
+        this.emit('stopping', elegantStoppers);
+
+        await Promise.all(elegantStoppers);
+
         this.started = false;
 
         delete this.services;

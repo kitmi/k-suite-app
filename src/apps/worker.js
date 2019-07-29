@@ -7,7 +7,7 @@ function startWorker(workingPath, configName, worker, workerName) {
         configName
     });
 
-    app.start_().then(worker).catch(error => {
+    app.start_().then(worker).then(() => app.stop_()).catch(error => {
         console.error(error);
         process.exit(1);
     });
