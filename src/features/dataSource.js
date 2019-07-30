@@ -40,11 +40,11 @@ module.exports = {
                 
                 let { connection: connectionString, ...other } = config;  
                 
-                let connectorService = Connector.createConnector(dbms, connectionString, { logger: app.server ? app.server.logger : app.logger, ...other });
+                let connectorService = Connector.createConnector(dbms, connectionString, { logger: app.logger || app.server.logger, ...other });
                 app.registerService(serviceName, connectorService);
 
-                app.on('stopping', () => {
-                    connectorService.end_().then();
+                app.on('stopping', (elegantStoppers) => {
+                    elegantStoppers.push(connectorService.end_());
                 });
             });            
         });        

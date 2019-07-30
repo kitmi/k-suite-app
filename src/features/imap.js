@@ -4,8 +4,9 @@ const Imap = tryRequire('imap');
 const { _, waitUntil_, Promise } = require('rk-utils');
 
 class ImapClient {
-    constructor(app, name, config) {
+    constructor(app, name, config) {        
         this.app = app;
+        this.name = name;
         this.config = config;
         this.imap = new Imap(config);
 
@@ -43,16 +44,20 @@ class ImapClient {
             //can be accessed by using the 'seq' namespace of the imap connection's 
             //instance (e.g. conn.seq.search() returns sequence number(s) instead of UIDs, 
             //conn.seq.fetch() fetches by sequence number(s) instead of UIDs, etc):
-            'search', 'copy', 'move', 'addFlags', 'delFlags', 'setFlags', 'addKeywords', 'delKeywords', 'setKeywords'
+            'search', 'copy', 'move', 'addFlags', 'delFlags', 'setFlags', 'addKeywords', 'delKeywords', 'setKeywords',
+
+            //gmail extention
+            'setLabels', 'addLabels', 'delLabels'
         ].forEach(methodName => {
             this[methodName + '_'] = Promise.promisify(this.imap[methodName], options);
         });
-
-        this.imap.connect();
     }
 
-    async waitForReady_() {
-        return waitUntil_(() => this.ready, 100, 100);
+    async connect_() {
+        if (!this.ready) {
+            this.imap.connect();
+            return waitUntil_(() => this.ready, 100, 100);
+        }
     }
 
     async close_() {      

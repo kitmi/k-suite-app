@@ -156,7 +156,9 @@ class ServiceContainer extends EventEmitter {
          */
         this.emit('stopping', elegantStoppers);
 
-        await Promise.all(elegantStoppers);
+        if (elegantStoppers.length > 0) {
+            await Promise.all(elegantStoppers);
+        }
 
         this.started = false;
 
