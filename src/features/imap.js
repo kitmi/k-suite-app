@@ -22,24 +22,24 @@ class ImapClient {
         });
 
         this.imap.on('alert', message => {
-            this.app.log('warning', `The imap server [${name}] issues an alert. Message: ${message}`);
+            this.app.log('warning', `The imap server [${this.name}] issues an alert. Message: ${message}`);
         });
 
         this.imap.once('ready', () => {
             this.ready = true;
-            this.app.log('info', `The imap server [${name}] is ready.`);
+            this.app.log('info', `The imap server [${this.name}] is ready.`);
         });
 
         this.imap.once('close', () => {    
             this.ready = false; 
             this._requireReset = true;
-            this.app.log('info', `The connection to imap server [${name}] is closed.`);
+            this.app.log('info', `The connection to imap server [${this.name}] is closed.`);
         });
 
         this.imap.once('end', () => {
             this.ready = false;       
             this._requireReset = true;     
-            this.app.log('info', `The imap server [${name}] is ended.`);
+            this.app.log('info', `The imap server [${this.name}] is ended.`);
         });
 
         //promisify imap functions
