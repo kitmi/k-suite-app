@@ -8,30 +8,38 @@ class ImapClient {
         this.app = app;
         this.name = name;
         this.config = config;
-        this.imap = new Imap(config);
+        this._requireReset = false;
+       
+        this._reset();
+    }
+
+    _reset() {
+        this.imap = new Imap(this.config);
 
         this.imap.on('error', error => {            
             this.error = error;
-            app.logError(error);
+            this.app.logError(error);
         });
 
         this.imap.on('alert', message => {
-            app.log('warning', `The imap server [${name}] issues an alert. Message: ${message}`);
+            this.app.log('warning', `The imap server [${name}] issues an alert. Message: ${message}`);
         });
 
         this.imap.once('ready', () => {
             this.ready = true;
-            app.log('info', `The imap server [${name}] is ready.`);
+            this.app.log('info', `The imap server [${name}] is ready.`);
         });
 
         this.imap.once('close', () => {    
             this.ready = false; 
-            app.log('info', `The connection to imap server [${name}] is closed.`);
+            this._requireReset = true;
+            this.app.log('info', `The connection to imap server [${name}] is closed.`);
         });
 
         this.imap.once('end', () => {
-            this.ready = false;            
-            app.log('info', `The imap server [${name}] is ended.`);
+            this.ready = false;       
+            this._requireReset = true;     
+            this.app.log('info', `The imap server [${name}] is ended.`);
         });
 
         //promisify imap functions
@@ -55,6 +63,10 @@ class ImapClient {
 
     async connect_() {
         if (!this.ready) {
+            if (this._requireReset) {
+                this._reset();
+            }
+
             this.imap.connect();
             return waitUntil_(() => this.ready, 100, 100);
         }
