@@ -58,6 +58,8 @@ class ImapClient {
             this.imap.connect();
             return waitUntil_(() => this.ready, 100, 100);
         }
+
+        return this.ready;
     }
 
     async close_() {      
