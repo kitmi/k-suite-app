@@ -7,8 +7,8 @@ class ImapClient {
     constructor(app, name, config) {        
         this.app = app;
         this.name = name;
-        this.config = config;
-        this._requireReset = false;
+        this.config = config; 
+        this._resetCounter = 0;       
        
         this._reset();
     }
@@ -59,11 +59,15 @@ class ImapClient {
         ].forEach(methodName => {
             this[methodName + '_'] = Promise.promisify(this.imap[methodName], options);
         });
+
+        this._requireReset = false;
     }
 
     async connect_() {
         if (!this.ready) {
             if (this._requireReset) {
+                this._resetCounter++;
+                this.app.log('info', 'The connection to the imap server is closed and need to be reconnected.', { resetCounter: this._resetCounter });
                 this._reset();
             }
 
