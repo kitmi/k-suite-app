@@ -49,7 +49,15 @@ module.exports = {
 
             let i18n = app.getService('i18n') || app.__;
 
-            const Db = require(path.join(app.backendPath, Literal.MODELS_PATH, pascalCase(schemaName)));
+            let modelPath;
+
+            if (oolong.modelDir) {
+                modelPath = app.toAbsolutePath(oolong.modelDir);
+            } else {
+                modelPath = path.join(app.backendPath, Literal.MODELS_PATH);
+            }
+
+            const Db = require(path.join(modelPath, pascalCase(schemaName)));
             let db = new Db(connector, i18n);
             db.app = app;
 

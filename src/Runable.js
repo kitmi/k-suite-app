@@ -15,6 +15,10 @@ const Logger = require('winston/lib/winston/logger');
  */
 const Runable = T => class extends T {
     _onUncaughtException = err => {
+        setTimeout(() => {
+            process.exit(1);
+        }, 1000);
+
         this.log('error', err, () => {
             process.exit(1);
         });
@@ -26,7 +30,7 @@ const Runable = T => class extends T {
 
     _onExit = code => {
         if (this.started) {
-            this.stop_();
+            this.stop_().catch(this.logError);
         }           
     };
 
