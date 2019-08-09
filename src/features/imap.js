@@ -6,15 +6,14 @@ const { _, waitUntil_, Promise } = require('rk-utils');
 class ImapClient {
     constructor(app, name, config) {        
         this.app = app;
-        this.name = name;
-        this.config = config; 
-        this._resetCounter = 0;       
-       
-        this._reset();
-    }
+        this.name = name;        
+        this.config = config;
 
-    _reset() {
-        this.imap = new Imap(this.config);
+        this.closing = false;
+
+        let { autoReconnect, ...imapConfig } = config;         
+
+        this.imap = new Imap(imapConfig);
 
         this.imap.on('error', error => {            
             this.error = error;
@@ -32,13 +31,15 @@ class ImapClient {
 
         this.imap.once('close', () => {    
             this.ready = false; 
-            this._requireReset = true;
             this.app.log('info', `The connection to imap server [${this.name}] is closed.`);
+
+            if (autoReconnect && !this.closing) {
+                this.imap.connect();
+            }
         });
 
         this.imap.once('end', () => {
-            this.ready = false;       
-            this._requireReset = true;     
+            this.ready = false;    
             this.app.log('info', `The imap server [${this.name}] is ended.`);
         });
 
@@ -60,19 +61,17 @@ class ImapClient {
             this[methodName + '_'] = Promise.promisify(this.imap[methodName], options);
         });
 
-        this._requireReset = false;
+        this.imap.connect();
+    }
+
+    async waitForReady_() {
+        return waitUntil_(() => this.ready, 100, 100);
     }
 
     async connect_() {
         if (!this.ready) {
-            if (this._requireReset) {
-                this._resetCounter++;
-                this.app.log('info', 'The connection to the imap server is closed and need to be reconnected.', { resetCounter: this._resetCounter });
-                this._reset();
-            }
-
             this.imap.connect();
-            return waitUntil_(() => this.ready, 100, 100);
+            return this.waitForReady_();
         }
 
         return this.ready;
@@ -80,6 +79,7 @@ class ImapClient {
 
     async close_() {      
         if (this.ready) {  
+            this.closing = true;
             this.imap.end();
 
             let ended = await waitUntil_(() => !this.ready, 100, 300);
@@ -91,7 +91,7 @@ class ImapClient {
     }  
     
     serverSupports(caps) {
-        return this.imap(caps);
+        return this.imap.serverSupports(caps);
     }
 
     /**
