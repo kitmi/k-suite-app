@@ -15,8 +15,7 @@ class ImapClient {
 
         this.imap = new Imap(imapConfig);
 
-        this.imap.on('error', error => {            
-            this.error = error;
+        this.imap.on('error', error => { 
             this.app.logError(error);
         });
 
@@ -24,12 +23,12 @@ class ImapClient {
             this.app.log('warning', `The imap server [${this.name}] issues an alert. Message: ${message}`);
         });
 
-        this.imap.once('ready', () => {
+        this.imap.on('ready', () => {
             this.ready = true;
             this.app.log('info', `The imap server [${this.name}] is ready.`);
         });
 
-        this.imap.once('close', () => {    
+        this.imap.on('close', () => {    
             this.ready = false; 
             this.app.log('info', `The connection to imap server [${this.name}] is closed.`);
 
@@ -38,7 +37,7 @@ class ImapClient {
             }
         });
 
-        this.imap.once('end', () => {
+        this.imap.on('end', () => {
             this.ready = false;    
             this.app.log('info', `The imap server [${this.name}] is ended.`);
         });
