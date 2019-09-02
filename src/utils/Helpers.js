@@ -6,6 +6,7 @@
  */ 
 
  const { _ } = require('rk-utils');
+ const spawn = require('child_process').spawn;
 
  /**
   * @param {string|array.<string>} features - Dependencies of other features.
@@ -110,4 +111,20 @@ exports.withExtraInfo = (Base) => class extends Base {
             this.extraInfo = extra.length > 1 ? extra : extra[0];
         }
     }
+};
+
+/**
+ * Restart the current process.
+ * @param {object} envVariables - Environment variables
+ */
+exports.restart = function (envVariables) {
+    let processOptions = {        
+        env: { ...process.env, ...envVariables },
+        detached: true,
+        stdio: 'ignore'
+    };
+
+    let cp = spawn(process.argv[0], process.argv.slice(1), processOptions);
+    cp.unref();
+    process.exit(0);
 };

@@ -10,6 +10,7 @@ class ImapClient {
         this.config = config;
 
         this.closing = false;
+        this.connecting = false;
 
         let { autoReconnect, ...imapConfig } = config;         
 
@@ -25,6 +26,7 @@ class ImapClient {
 
         this.imap.on('ready', () => {
             this.ready = true;
+            this.connecting = false;
             this.app.log('info', `The imap server [${this.name}] is ready.`);
         });
 
@@ -38,7 +40,7 @@ class ImapClient {
             this.app.log('info', `The imap server [${this.name}] is ended.`);
 
             if (autoReconnect && !this.closing) {
-                this.imap.connect();
+                this._connect();
             }
         });
 
@@ -60,16 +62,24 @@ class ImapClient {
             this[methodName + '_'] = Promise.promisify(this.imap[methodName], options);
         });
 
+        this._connect();
+    }
+
+    _connect() {
+        this.connecting = true;
         this.imap.connect();
     }
 
-    async waitForReady_() {
-        return waitUntil_(() => this.ready, 100, 100);
+    async waitForReady_(interval = 500, maxRound = 30) {
+        return waitUntil_(() => this.ready, interval, maxRound);
     }
 
     async connect_() {
         if (!this.ready) {
-            this.imap.connect();
+            if (!this.connecting) {
+                this._connect();
+            }
+            
             return this.waitForReady_();
         }
 
