@@ -30,16 +30,16 @@ class ImapClient {
 
         this.imap.on('close', () => {    
             this.ready = false; 
-            this.app.log('info', `The connection to imap server [${this.name}] is closed.`);
-
-            if (autoReconnect && !this.closing) {
-                this.imap.connect();
-            }
+            this.app.log('info', `The connection to imap server [${this.name}] is closed.`);           
         });
 
         this.imap.on('end', () => {
             this.ready = false;    
             this.app.log('info', `The imap server [${this.name}] is ended.`);
+
+            if (autoReconnect && !this.closing) {
+                this.imap.connect();
+            }
         });
 
         //promisify imap functions
