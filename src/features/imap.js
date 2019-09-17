@@ -39,7 +39,7 @@ class ImapClient {
             this.ready = false;    
             this.app.log('info', `The imap server [${this.name}] is ended.`);
 
-            if (autoReconnect && !this.closing) {
+            if (autoReconnect && !this.closing && !this.connecting) {
                 this._connect();
             }
         });
@@ -79,7 +79,7 @@ class ImapClient {
             if (!this.connecting) {
                 this._connect();
             }
-            
+
             return this.waitForReady_();
         }
 

@@ -67,6 +67,8 @@ const Runable = T => class extends T {
      */
     async start_() {        
         this._initialize();
+
+        process.on('exit', this._onExit);
         
         return super.start_();
     }
@@ -77,6 +79,8 @@ const Runable = T => class extends T {
      * @memberof Runable
      */
     async stop_() {
+        process.removeListener('exit', this._onExit);
+
         await super.stop_();
 
         return new Promise((resolve, reject) => {
@@ -110,13 +114,9 @@ const Runable = T => class extends T {
 
         this._injectLogger();
         this._injectErrorHandlers(); 
-
-        process.on('exit', this._onExit);
     }
 
     _uninitialize() {
-        process.removeListener('exit', this._onExit);
-
         const detach = true;
         this._injectErrorHandlers(detach);       
         this._injectLogger(detach);         
@@ -149,6 +149,7 @@ const Runable = T => class extends T {
 
             this.logger = winston.createLogger(loggerOpt);   
         }
+        
         this.log('verbose', 'Logger injected.');            
     }
 
