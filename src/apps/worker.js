@@ -1,6 +1,6 @@
-const App = require('../App');
-
 function startWorker(workingPath, configName, worker, workerName) {
+    const App = require('..');
+
     // create a Client instance with custom configuration
     let app = new App(workerName || 'Worker', {
         workingPath,

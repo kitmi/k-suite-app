@@ -1,7 +1,7 @@
-const App = require('../App');
-const { combine, colorize, simple } = App.loggerProvider.format;
-
 function startCommand(commandName, commandHandler, config, loggerOpt) {
+    const App = require('..');    
+    const { combine, colorize, simple } = App.loggerProvider.format;
+
     if (typeof loggerOpt === 'string') {
         loggerOpt = {
             level: loggerOpt
