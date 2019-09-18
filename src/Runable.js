@@ -98,12 +98,28 @@ const Runable = T => class extends T {
      * @param {Logger} logger 
      */
     replaceLogger(logger) {
-        this._injectLogger(true /* detact */);
+        if (logger) {
+            assert: !this._loggerBackup;
 
-        this.logger = logger;
-        this._externalLogger = true;
+            this._loggerBackup = this.logger;
+            this._externalLoggerBackup = this._externalLogger;
+            
+            this.logger = logger;
+            this._externalLogger = true;
 
-        this.log('verbose', 'A new logger attached.');
+            this.log('verbose', 'A new app logger attached.');
+        } else {
+            //replace back
+            assert: this._loggerBackup;
+
+            this.logger = this._loggerBackup;
+            this._externalLogger = this._externalLoggerBackup;
+
+            delete this._loggerBackup;
+            delete this._externalLoggerBackup;
+
+            this.log('verbose', 'The current app logger is dettached.');
+        }
     }
 
     _initialize() {
@@ -128,11 +144,12 @@ const Runable = T => class extends T {
     _injectLogger(detach) {
         if (detach) {
             this.log('verbose', 'Logger is detaching ...');
-            if (this._externalLogger) {
-                delete this._externalLogger;
-            } else {
+
+            if (!this._externalLogger) {
                 this.logger.close();
             }
+
+            delete this._externalLogger;
             delete this.logger;
             return;
         }

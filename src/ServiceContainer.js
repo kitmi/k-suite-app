@@ -70,13 +70,7 @@ class ServiceContainer extends EventEmitter {
          * Config basename
          * @member {string}         
          */
-        this.configName = this.options.configName || Literal.APP_CFG_NAME;
-
-        /**
-         * Backend files path.
-         * @member {string}         
-         **/
-        this.backendPath = this.toAbsolutePath(this.options.backendPath || Literal.BACKEND_PATH);
+        this.configName = this.options.configName || Literal.APP_CFG_NAME;        
     }
 
     /**

@@ -33,5 +33,9 @@ module.exports = {
         }
 
         app.replaceLogger(logger);
+
+        app.on('stopping', () => {
+            app.replaceLogger(/* back to original */);
+        }); 
     }
 };

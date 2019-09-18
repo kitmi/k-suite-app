@@ -53,8 +53,10 @@ module.exports = {
 
             if (oolong.modelDir) {
                 modelPath = app.toAbsolutePath(oolong.modelDir);
-            } else {
+            } else if (app.backendPath) {
                 modelPath = path.join(app.backendPath, Literal.MODELS_PATH);
+            } else {
+                modelPath = app.toAbsolutePath(Literal.MODELS_PATH); 
             }
 
             const Db = require(path.join(modelPath, pascalCase(schemaName)));
